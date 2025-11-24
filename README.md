@@ -3,7 +3,6 @@
 ![Python](https://img.shields.io/badge/Python-3.12-blue)
 ![Django](https://img.shields.io/badge/Django-5.2-green)
 ![Docker](https://img.shields.io/badge/Docker-enabled-lightgrey)
-![License](https://img.shields.io/badge/License-MIT-blue)
 
 **Django REST Enterprise** is a ready-to-use, modular template for Django REST Framework projects with a clean architecture. It is designed for scalable, maintainable, and production-ready applications.
 
@@ -21,5 +20,10 @@
 
 ---
 
-## 🔹 Project Structure
+## 🔹 Getting Started (How to Get It)
 
+1. **Clone the repository:**
+
+```bash
+git clone https://github.com/vahiddev7/django-rest-enterprise.git
+cd django-rest-enterprise
