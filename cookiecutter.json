@@ -1,0 +1,23 @@
+{
+  "project_name": "Django REST Enterprise Project",
+  "project_slug": "drf_enterprise",
+  "author_name": "Your Name",
+  "email": "you@example.com",
+  "python_version": "3.12",
+  "use_celery": "y",
+  "use_docker": "y",
+  "timezone": "UTC",
+
+  "secret_key": "change-me",
+  "jwt_secret": "change-me-too",
+
+  "db_default_name": "app_db",
+  "db_default_user": "postgres",
+  "db_default_password": "postgres",
+  "db_default_port": "5432",
+
+  "db_analytics_name": "analytics_db",
+  "db_analytics_user": "postgres",
+  "db_analytics_password": "postgres",
+  "db_analytics_port": "5433"
+}

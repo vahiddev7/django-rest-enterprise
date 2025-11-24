@@ -1,0 +1,27 @@
+# --- pyproject.toml ---
+
+[tool.poetry]
+name = "{{cookiecutter.project_slug}}"
+version = "0.1.0"
+description = "Enterprise Django REST project"
+authors = ["{{cookiecutter.author_name}} <{{cookiecutter.email}}>"]
+
+[tool.poetry.dependencies]
+python = "^{{cookiecutter.python_version}}"
+django = "^5.0"
+djangorestframework = "^3.15"
+drf-spectacular = "^0.27.0"
+psycopg2-binary = "^2.9"
+PyJWT = "^2.9"
+celery = "^5.3"
+redis = "^5.0"
+
+[tool.poetry.dev-dependencies]
+black = "^24.0"
+isort = "^5.13"
+pytest = "^8.0"
+pytest-django = "^4.8"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

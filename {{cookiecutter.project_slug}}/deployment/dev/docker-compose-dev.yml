@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+
+  db-default:
+    image: postgres:17
+    container_name: db_default
+    ports:
+      - "{{ cookiecutter.db_default_port }}:5432"
+    environment:
+      - POSTGRES_DB={{ cookiecutter.db_default_name }}
+      - POSTGRES_USER={{ cookiecutter.db_default_user }}
+      - POSTGRES_PASSWORD={{ cookiecutter.db_default_password }}
+    volumes:
+      - db-default-postgres-data:/var/lib/postgresql/data/
+
+  db-analytics:
+    image: postgres:17
+    container_name: db_analytics
+    ports:
+      - "{{ cookiecutter.db_analytics_port }}:5432"
+    environment:
+      - POSTGRES_DB={{ cookiecutter.db_analytics_name }}
+      - POSTGRES_USER={{ cookiecutter.db_analytics_user }}
+      - POSTGRES_PASSWORD={{ cookiecutter.db_analytics_password }}
+    volumes:
+      - db-analytics-postgres-data:/var/lib/postgresql/data/
+
+
+  redis:
+    image: redis:7.2.4-alpine
+    container_name: redis
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-data:/data
+
+
+volumes:
+  db-default-postgres-data:
+    external: true
+  db-analytics-postgres-data:
+    external: true
+  redis-data:
+    external: true
