@@ -27,3 +27,12 @@
 ```bash
 git clone https://github.com/vahiddev7/django-rest-enterprise.git
 cd django-rest-enterprise
+pip install cookiecutter
+cookiecutter path/to/django-rest-enterprise
+```
+or
+
+```bash
+pip install cookiecutter
+cookiecutter https://github.com/vahiddev7/django-rest-enterprise.git
+```
