@@ -30,7 +30,10 @@ cd django-rest-enterprise
 pip install cookiecutter
 cookiecutter path/to/django-rest-enterprise
 ```
+
 or
+
+2. **Use directly:**
 
 ```bash
 pip install cookiecutter
