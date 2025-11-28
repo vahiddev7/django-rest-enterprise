@@ -2,6 +2,7 @@
 import os
 from pathlib import Path
 from decouple import config
+from core.utils.features import get_enabled_apps, is_feature_enabled
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
@@ -10,7 +11,7 @@ DEBUG = config('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', '*').split(',')
 
-INSTALLED_APPS = [
+BASE_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -18,10 +19,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'drf_spectacular',
-    'modules.users',
-    'modules.authentication',
 ]
+
+DYNAMIC_APPS = get_enabled_apps()
+
+if is_feature_enabled("drf_spectacular"):
+    BASE_APPS += ['drf_spectacular']
+
+INSTALLED_APPS = BASE_APPS + DYNAMIC_APPS
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

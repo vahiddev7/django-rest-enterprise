@@ -1,0 +1,8 @@
+# config/features.yaml
+# active module
+enabled_modules:
+  - modules.users
+  - modules.authentication
+
+enabled_features:
+  - drf_spectacular
