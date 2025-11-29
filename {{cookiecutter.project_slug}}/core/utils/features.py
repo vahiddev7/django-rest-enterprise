@@ -2,7 +2,7 @@
 import os
 from functools import lru_cache
 import yaml
-from decouple import config
+from decouple import config as config_env
 from django.core.exceptions import ImproperlyConfigured
 
 
@@ -11,7 +11,7 @@ def get_enabled_apps() -> list[str]:
     """
         return enable module
     """
-    config_path = config("FEATURES_CONFIG_PATH", "/app/config/features.yaml")
+    config_path = config_env("FEATURES_CONFIG_PATH", "/app/config/features.yaml")
     
     if not os.path.exists(config_path):
         fallback_path = os.path.join(os.path.dirname(__file__), "../../config/features.yaml")
