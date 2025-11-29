@@ -44,7 +44,7 @@ def is_feature_enabled(feature_name: str) -> bool:
     Returns:
         bool: if True enable else not enable
     """
-    config_path = os.getenv("FEATURES_CONFIG_PATH", "/app/config/features.yaml")
+    config_path = config_env("FEATURES_CONFIG_PATH", "/app/config/features.yaml")
     if not os.path.exists(config_path):
         return False
     

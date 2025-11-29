@@ -124,7 +124,7 @@ DATABASE_ROUTERS = ['core.db_router.DatabaseRouter']
 
 STATIC_URL = 'static/'
 
-MEDIA_URL = "media"
+MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 REST_FRAMEWORK = {
