@@ -1,8 +1,13 @@
 # --- base.py ---
-import os
+{% if cookiecutter.use_sentry.lower() == 'y' %}
+import sentry_sdk
+{% endif %}
 from pathlib import Path
 from decouple import config
 from core.utils.features import get_enabled_apps, is_feature_enabled
+{% if cookiecutter.use_sentry.lower() == 'y' %}
+from sentry_sdk.integrations.django import DjangoIntegration
+{% endif %}
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
@@ -82,6 +87,9 @@ DATABASE_ROUTERS = ['core.db_router.DatabaseRouter']
 
 STATIC_URL = 'static/'
 
+MEDIA_URL = "media"
+MEDIA_ROOT = BASE_DIR / "media"
+
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
 }
@@ -109,4 +117,15 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = '{{ cookiecutter.timezone }}'
+{% endif %}
+{% if cookiecutter.use_sentry.lower() == 'y' %}
+SENTRY_DSN = config("SENTRY_DSN", "")
+
+if SENTRY_DSN:
+    sentry_sdk.init(
+        dsn=SENTRY_DSN,
+        integrations=[DjangoIntegration()],
+        traces_sample_rate=1.0,
+        send_default_pii=True,
+    )
 {% endif %}

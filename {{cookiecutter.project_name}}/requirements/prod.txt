@@ -1,3 +1,6 @@
 -r ./base.txt
 
 gunicorn
+{% if cookiecutter.use_sentry.lower() == 'y' %}
+sentry-sdk>=1.28.0
+{% endif %}
