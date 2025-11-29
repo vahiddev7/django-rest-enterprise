@@ -12,6 +12,18 @@ services:
     depends_on:
       - redis
 
+  {% if cookiecutter.use_celery.lower() == 'y' %}
+  celery:
+    build: ./docker
+    container_name: celery
+    command: celery -A config worker -l info
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+  {% endif %}
+
   redis:
     image: redis:7
     ports:

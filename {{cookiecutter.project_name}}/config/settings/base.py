@@ -100,3 +100,13 @@ SPECTACULAR_SETTINGS = {
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
 }
+
+{% if cookiecutter.use_celery.lower() == 'y' %}
+# Celery Configuration
+CELERY_BROKER_URL = f"redis://{config('REDIS_HOST', 'localhost')}:{config('REDIS_PORT', 6379)}/0"
+CELERY_RESULT_BACKEND = CELERY_BROKER_URL
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = '{{ cookiecutter.timezone }}'
+{% endif %}

@@ -1,12 +1,12 @@
 [tool.poetry]
-name = "{{cookiecutter.project_slug}}"
+name = "{{cookiecutter.project_name}}"
 version = "0.1.0"
 description = "Enterprise Django REST project template"
 authors = ["{{cookiecutter.author_name}} <{{cookiecutter.email}}>"]
 license = "MIT"
 readme = "README.md"
 packages = [
-    { include = "{{cookiecutter.project_slug}}" }
+    { include = "{{cookiecutter.project_name}}" }
 ]
 
 [tool.poetry.dependencies]
@@ -83,7 +83,7 @@ exclude = [
 
 # ---- PYTEST ----
 [tool.pytest.ini_options]
-DJANGO_SETTINGS_MODULE = "{{cookiecutter.project_slug}}.settings"
+DJANGO_SETTINGS_MODULE = "{{cookiecutter.project_name}}.settings"
 python_files = ["tests.py", "test_*.py", "*_tests.py"]
 addopts = "--cov=. --cov-report=term-missing"
 

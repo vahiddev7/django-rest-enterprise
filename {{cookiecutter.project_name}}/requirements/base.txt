@@ -9,7 +9,9 @@ psycopg2-binary>=2.9
 python-decouple==3.8
 
 PyJWT>=2.9
+{% if cookiecutter.use_celery.lower() == 'y' %}
 celery>=5.3
+{% endif %}
 redis>=5.0
 
 python-dotenv>=1.0
