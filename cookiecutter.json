@@ -2,7 +2,7 @@
   "project_name": "Django REST Enterprise Project",
   "project_slug": "drf_enterprise",
   "author_name": "Your Name",
-  "email": "you@example.com",
+  "email": "vahid.zare.dev@gmail.com",
   "python_version": "3.12",
   "use_celery": "y",
   "use_docker": "y",
