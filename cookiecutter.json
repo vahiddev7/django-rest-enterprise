@@ -5,7 +5,6 @@
   "email": "vahid.zare.dev@gmail.com",
   "python_version": "3.12",
   "use_celery": "y",
-  "use_docker": "y",
   "timezone": "UTC",
 
   "secret_key": "change-me",
