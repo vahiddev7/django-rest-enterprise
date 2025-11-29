@@ -1,4 +1,5 @@
 # --- base.py ---
+import os
 {% if cookiecutter.use_sentry.lower() == 'y' %}
 import sentry_sdk
 {% endif %}
@@ -10,6 +11,42 @@ from sentry_sdk.integrations.django import DjangoIntegration
 {% endif %}
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": "[%(asctime)s] [%(levelname)s] [%(name)s:%(lineno)s] %(message)s",
+        },
+        "simple": {
+            "format": "[%(levelname)s] %(message)s",
+        },
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "verbose",
+        },
+        "file": {
+            "class": "logging.FileHandler",
+            "formatter": "verbose",
+            "filename": os.path.join(BASE_DIR, "logs/app.log"),
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console", "file"],
+            "level": "INFO",
+            "propagate": True,
+        },
+        "modules": {
+            "handlers": ["console", "file"],
+            "level": "DEBUG",
+            "propagate": False,
+        },
+    },
+}
 
 SECRET_KEY = config('SECRET_KEY', 'change-me')
 DEBUG = config('DEBUG', 'False') == 'True'
